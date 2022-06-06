@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Companies</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+</head>
+<body>
+<h1>All Companies</h1>
+<table border="5" class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Company Name</th>
+        <th>Located Country</th>
+        <th>Courses</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="companyList" type="springmvc.controllers.CompanyController"*/-->
+    <tr th:each="company:${companyList}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.getCompanyName()}"></td>
+        <td th:text="${company.getLocatedCountry()}"></td>
+        <td>
+            <a th:href="@{'/api/courses/find/by/'+${company.id}}">
+                <button>Courses</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/api/companies/update/'+${company.id}}">
+                <button>Update</button>
+            </a>
+        </td>
+        <td style="border-radius: 10px">
+            <a th:href="@{'/api/companies/delete/' + ${company.id}}">
+                <button>Delete</button>
+            </a>
+
+<!--            <form th:method="DELETE" th:action="@{/delete/(companyId=${company.getId()})}">-->
+<!--                <input style="color: #ff0051" class="button" type="submit" value="delete"/>-->
+<!--            </form>-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/api/companies/save}">
+        <button>Add new company</button>
+    </a>
+</div>
+
+</body>
+</html>

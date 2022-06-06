@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Teacher</title>
+
+</head>
+<body>
+<h2>Update Teacher</h2>
+<form action="#"
+      th:action="@{'/api/teachers/update/' +${teacherId}}"
+      method="post"
+      th:object="${updateTeacher}">
+    <label for="firstName">First Name</label>
+    <input id="firstName" th:field="${updateTeacher.firstName}" placeholder="firstName">
+    <br><br>
+    <label for="lastName">Last Name</label>
+    <input id="lastName" th:field="${updateTeacher.lastName}" placeholder="lastName">
+    <br><br>
+    <label for="email">Email</label>
+    <input id="email" th:field="${updateTeacher.email}" placeholder="xxxxxxx@gmail.com">
+    <br><br>
+
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

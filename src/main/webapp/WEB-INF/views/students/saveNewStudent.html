@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Student</title>
+</head>
+<body>
+<h2>Save new student</h2>
+<form action="#"
+      th:action="@{'/api/students/save/' + ${groupId}}"
+      method="post"
+      th:object="${emptyStudent}">
+
+    <input type="hidden" th:field="${emptyStudent.id}">
+
+    <label for="firstName">First Name</label>
+    <input id="firstName" th:field="${emptyStudent.firstName}" placeholder="firstName">
+    <br><br>
+    <label for="lastName">lastName</label>
+    <input id="lastName" th:field="${emptyStudent.lastName}" placeholder="lastName">
+    <br><br>
+    <label for="email">Email</label>
+    <input id="email" type="email" th:field="${emptyStudent.email}" placeholder="xxxxxxxx@gmail.com">
+    <br><br>
+    <label for="studyFormat">Study Format</label>
+    <input id="studyFormat"  th:field="${emptyStudent.studyFormat}" placeholder="studyFormat">
+    <br><br>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Save new group</title>
+</head>
+<body>
+<h2>Save new group</h2>
+<form action="#" th:action="@{'/api/groups/saveGroup/'+${courseId}}" method="post" th:object="${emptyGroup}">
+
+    <label for="courseName">Group Name</label>
+    <input id="courseName" th:field="${emptyGroup.groupName}" placeholder="groupName">
+    <br><br>
+    <label for="dateOfStart">Date of Start</label>
+    <input id="dateOfStart" type="text" th:field="${emptyGroup.dateOfStart}" placeholder="dateOfStart">
+    <br><br>
+    <label for="dateOfFinish">Date of Finish</label>
+    <input id="dateOfFinish" type="text" th:field="${emptyGroup.dateOfFinish}" placeholder="dateOfFinish">
+    <br><br>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html></html>

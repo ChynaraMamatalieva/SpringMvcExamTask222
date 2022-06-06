@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Groups</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<h2>All Groups</h2>
+<table border="5" class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>groupName</th>
+        <th>dateOfStart</th>
+        <th>dateOfFinish</th>
+        <th>courses</th>
+        <th>Students</th>
+        <th>Actions</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group: ${groups}">
+        <td th:text="${group.id}"></td>
+        <td th:text="${group.groupName}"></td>
+        <td th:text="${group.dateOfStart}"></td>
+        <td th:text="${group.dateOfFinish}"></td>
+        <td>
+            <a th:href="@{'/api/courses/find/by/'+${courses.get(0).getCourses().get(0).getCompany().id}}">
+                <button>Courses</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/api/students/find/by/'+${group.id}}">
+                <button>Students</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/api/groups/update/'+${group.id}}">
+                <button>Update</button>
+            </a>
+            <a th:href="@{'/api/groups/delete/'+${group.id}}">
+                <button>Delete</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/api/groups/save/' + ${courseId}}">
+        <button>Save</button>
+    </a>
+</div>
+<br>
+<div>
+    <a th:href="@{/api/companies}">
+        <button>Go back</button>
+    </a>
+</div>
+<br>
+
+</body>
+</html>
